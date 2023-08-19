@@ -1,0 +1,92 @@
+@font-face {
+    font-family: '/static/fonts/joystix';
+    src: local('joystix'), local('joystix'),
+    url('joystix.woff2') format('woff2'),
+    url('joystix.woff') format('woff'),
+    url('joystix.ttf') format('truetype'),
+    url('joystix.otf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rubik Mono One';
+    src: local('Rubik Mono One Regular'), local('RubikMonoOne-Regular'),
+    url('rubikmonooneregular.woff2') format('woff2'),
+    url('rubikmonooneregular.woff') format('woff'),
+    url('rubikmonooneregular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Code New Roman';
+    src: local('Code New Roman Italic'),
+    local('CodeNewRoman-Italic'),
+    url('Codenewromanitalic.woff2') format('woff2'),
+    url('Codenewromanitalic.woff') format('woff'),
+    url('Codenewromanitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Code New Roman';
+    src: local('Code New Roman'),
+    local('CodeNewRoman'),
+    url('Codenewroman.woff2') format('woff2'),
+    url('Codenewroman.woff') format('woff'),
+    url('Codenewroman.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Code New Roman';
+    src: local('Code New Roman Bold'),
+    local('CodeNewRoman-Bold'),
+    url('Codenewromanbold.woff2') format('woff2'),
+    url('Codenewromanbold.woff') format('woff'),
+    url('Codenewromanbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: local('Ubuntu Mono'),
+    local('UbuntuMono-Regular'),
+    url('ubuntumono.woff2') format('woff2'),
+    url('ubuntumono.woff') format('woff'),
+    url('ubuntumono.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: local('Ubuntu Mono Italic'),
+    local('UbuntuMono-Italic'),
+    url('ubuntumonoitalic.woff2') format('woff2'),
+    url('ubuntumonoitalic.woff') format('woff'),
+    url('ubuntumonoitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: local('Ubuntu Mono Bold'),
+    local('UbuntuMono-Bold'),
+    url('ubuntumonobold.woff2') format('woff2'),
+    url('ubuntumonobold.woff') format('woff'),
+    url('ubuntumonobold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: local('Ubuntu Mono Bold Italic'),
+    local('UbuntuMono-BoldItalic'),
+    url('ubuntumonobolditalic.woff2') format('woff2'),
+    url('ubuntumonobolditalic.woff') format('woff'),
+    url('ubuntumonobolditalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}

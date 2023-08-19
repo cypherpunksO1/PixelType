@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/checkbox.css">
+    <link rel="stylesheet" href="/static/fonts.css">
+    <title>PixelType</title>
+</head>
+
+<header id="header">
+    <a href="/">
+        <div class="logo">
+            <span class="logo-text">PixelType</span>
+<!--            <input type="checkbox" id="fontSwitch"/><label for="fontSwitch">Toggle</label>-->
+        </div>
+    </a>
+</header>
+
+<body>
+
+<div id="body" class="flex-center" style="margin-top: 50px">
+    <div class="container-6">
+        <h1 id="titleInput">{{ post.title }}</h1>
+        <p style="margin-left: 5px;">🕔 {{ post.created }}, {{ post.author }}</p>
+        <p style="margin-left: 5px;" id="textInput">{{ post.text }}</p>
+        <span id="loadDraftButton" style="display: none;">
+            <br>
+            <button onclick="loadDraft();" style="border: 1px solid var(--accent-color);">load draft</button>
+            <br><br>
+        </span>
+
+    </div>
+</div>
+</body>
+</html>

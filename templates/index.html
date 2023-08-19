@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/checkbox.css">
+     <link rel="stylesheet" href="/static/fonts.css">
+    <title>PixelType</title>
+</head>
+
+<header id="header">
+    <div class="logo">
+        <span class="logo-text">PixelType</span>
+<!--        <input type="checkbox" id="fontSwitch" /><label for="fontSwitch">Toggle</label>-->
+    </div>
+</header>
+
+<body>
+
+<div id="body" class="flex-center" style="margin-top: 50px">
+    <div class="container-6">
+        <input id="titleInput" type="text" placeholder="title">
+        <input style="font-size: 25px; margin-left: 5px;" id="authorInput" type="text" placeholder="author">
+        <textarea style="margin-left: 5px;" placeholder="text you type" name="" id="textInput"></textarea>
+        <br>
+        <span id="loadDraftButton" style="display: none;">
+            <br>
+            <button onclick="loadDraft();" style="border: 1px solid var(--accent-color);">load draft</button>
+            <br><br>
+        </span>
+        <button onclick="createPost();">publish</button>
+
+    </div>
+</div>
+</body>
+
+<script src="/static/js/index.js"></script>
+<script>
+
+    if (localStorage.getItem('draftText')) {
+        document.getElementById('loadDraftButton').style.display = 'block';
+    }
+
+</script>
+</html>
