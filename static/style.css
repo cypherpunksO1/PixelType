@@ -64,6 +64,17 @@ input {
     outline: none;
 }
 
+textarea {
+    background: transparent;
+    color: white;
+    border: 1px solid var(--main-bg-color);
+    outline: none;
+    resize: none;
+    width: calc(100% - 10px);
+    height: 50px;
+    margin-top: 20px;
+}
+
 #titleInput {
     width: calc(100% - 10px);
     padding: 5px;
@@ -77,19 +88,6 @@ input {
     padding: 5px;
     font-size: 30px;
     font-family: 'Code New Roman';
-}
-
-
-
-textarea {
-    background: transparent;
-    color: white;
-    border: 1px solid var(--main-bg-color);
-    outline: none;
-    resize: none;
-    width: calc(100% - 10px);
-    height: 50px;
-    margin-top: 20px;
 }
 
 
