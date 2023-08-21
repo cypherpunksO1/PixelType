@@ -32,12 +32,10 @@ async def render_html(request: Request):
 @app.get("/type/{key}/")
 async def render_html(request: Request, key: str):
     post = session.query(Post).filter_by(key=key).first()
-    try:
-        post.created = datetime.datetime.fromtimestamp(post.created).date()
-    except TypeError:
-        post.created = 'Unknown'
+    created = str(datetime.datetime.fromtimestamp(post.created).date())
 
     return templates.TemplateResponse(
         "type.html",
         {"request": request,
-         'post': post})
+         'post': post,
+         'created': created})
