@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from core.database import session
+from core.db.database import session
 from models.db_models import Post
 import utils
 import time

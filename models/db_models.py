@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from core.db_mixins import SerializerMixin
+from core.db.mixins import SerializerMixin
 
 Base = declarative_base()
 
