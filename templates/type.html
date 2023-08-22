@@ -22,17 +22,11 @@
 
 <body>
 
-<div id="body" class="flex-center" style="margin-top: 50px">
+<div id="body" class="flex-center">
     <div class="container-6">
         <h1 id="titleInput">{{ post.title }}</h1>
-        <p id="authorInput" style="margin-left: 7px;">{{ post.author }} • {{ created }}</p>
+        <p style="margin-top: -15px;" id="authorInput">{{ post.author }} • {{ created }}</p>
         <p id="textInput">{{ post.text }}</p>
-        <span id="loadDraftButton" style="display: none;">
-            <br>
-            <button onclick="loadDraft();" style="border: 1px solid var(--accent-color);">load draft</button>
-            <br><br>
-        </span>
-
     </div>
 </div>
 </body>

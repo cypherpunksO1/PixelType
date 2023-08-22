@@ -13,5 +13,5 @@ def transform_title(title):
         formatted_title = title.replace(' ', '-')
 
     formatted_title = re.sub(r'[^\w\s]', '-', formatted_title)  # Remove punctuation
-    transformed_title = f"{formatted_title}-{day}-{month}"
+    transformed_title = f"{formatted_title}-{month}-{day}"
     return transformed_title

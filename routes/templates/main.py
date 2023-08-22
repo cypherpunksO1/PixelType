@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from fastapi import Request
+from fastapi import Request, HTTPException
 from core.db.database import session
 from settings import templates
 from models.db_models import Post
@@ -19,12 +19,18 @@ async def render_html(request: Request, key: str):
     """ Get post with key. """
 
     post = session.query(Post).filter_by(key=key).first()
-    created = str(datetime.datetime.fromtimestamp(post.created).date())
 
-    # TODO: Выпилить created из response
+    if post:
+        created = str(datetime.datetime.fromtimestamp(post.created).date())
 
-    return templates.TemplateResponse(
-        "type.html",
-        {"request": request,
-         'post': post,
-         'created': created})
+        # TODO: Выпилить created из response
+
+        return templates.TemplateResponse(
+            "type.html",
+            {"request": request,
+             'post': post,
+             'created': created})
+    else:
+        return HTTPException(
+            status_code=404
+        )

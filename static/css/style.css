@@ -14,6 +14,10 @@ body {
     color: var(--main-color);
 }
 
+#body {
+    margin-top: 10px;
+}
+
 header {
     position: sticky;
     top: 0;
@@ -80,7 +84,6 @@ textarea {
 
 #titleInput {
     width: calc(100% - 10px);
-    padding: 5px;
     font-size: 50px;
     font-weight: 900;
 }
@@ -88,12 +91,11 @@ textarea {
 
 #textInput {
     width: calc(100% - 10px);
-    padding: 5px;
     font-size: 20px;
 }
 
 #authorInput {
-     font-size: 20px;
+     font-size: 15px;
 }
 
 button {

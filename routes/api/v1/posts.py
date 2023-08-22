@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from core.db.database import session
+from sqlalchemy import func
 from models.db_models import Post
 import utils
 import time
@@ -10,10 +11,15 @@ posts_router = APIRouter()
 
 @posts_router.post('/api/v1/post/create')
 async def create_post(post: pydantic_models.Post):
+    key = utils.transform_title(post.title)
+
+    if session.query(Post).filter(func.lower(Post.key).ilike(f"%{key.lower()}%")).count() > 0:
+        key = '%s-%s' % (key, session.query(Post).filter(func.lower(Post.key).ilike(f"%{key.lower()}%")).count() + 1)
+
     post = Post(
         author=post.author,
         title=post.title,
-        key=utils.transform_title(post.title),
+        key=key,
         text=post.text,
         created=time.time()
     )
