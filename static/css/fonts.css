@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'joystix';
+    src: local('joystix'), local('joystix'),
+    url('/source/fonts/joystix.woff2') format('woff2'),
+    url('/source/fonts/joystix.woff') format('woff'),
+    url('/source/fonts/joystix.ttf') format('truetype'),
+    url('/source/fonts/joystix.otf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rubik Mono One';
+    src: local('Rubik Mono One Regular'), local('RubikMonoOne-Regular'),
+    url('/source/fonts/rubikmonooneregular.woff2') format('woff2'),
+    url('/source/fonts/rubikmonooneregular.woff') format('woff'),
+    url('/source/fonts/rubikmonooneregular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Code New Roman';
+    src: local('Code New Roman Italic'),
+    local('CodeNewRoman-Italic'),
+    url('/source/fonts/Codenewromanitalic.woff2') format('woff2'),
+    url('/source/fonts/Codenewromanitalic.woff') format('woff'),
+    url('/source/fonts/Codenewromanitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Code New Roman';
+    src: local('Code New Roman'),
+    local('CodeNewRoman'),
+    url('/source/fonts/Codenewroman.woff2') format('woff2'),
+    url('/source/fonts/Codenewroman.woff') format('woff'),
+    url('/source/fonts/Codenewroman.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Code New Roman';
+    src: local('Code New Roman Bold'),
+    local('CodeNewRoman-Bold'),
+    url('/source/fonts/Codenewromanbold.woff2') format('woff2'),
+    url('/source/fonts/Codenewromanbold.woff') format('woff'),
+    url('/source/fonts/Codenewromanbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: local('Ubuntu Mono'),
+    local('UbuntuMono-Regular'),
+    url('/source/fonts/ubuntumono.woff2') format('woff2'),
+    url('/source/fonts/ubuntumono.woff') format('woff'),
+    url('/source/fonts/ubuntumono.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: local('Ubuntu Mono Italic'),
+    local('UbuntuMono-Italic'),
+    url('/source/fonts/ubuntumonoitalic.woff2') format('woff2'),
+    url('/source/fonts/ubuntumonoitalic.woff') format('woff'),
+    url('/source/fonts/ubuntumonoitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: local('Ubuntu Mono Bold'),
+    local('UbuntuMono-Bold'),
+    url('/source/fonts/ubuntumonobold.woff2') format('woff2'),
+    url('/source/fonts/ubuntumonobold.woff') format('woff'),
+    url('/source/fonts/ubuntumonobold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: local('Ubuntu Mono Bold Italic'),
+    local('UbuntuMono-BoldItalic'),
+    url('/source/fonts/ubuntumonobolditalic.woff2') format('woff2'),
+    url('/source/fonts/ubuntumonobolditalic.woff') format('woff'),
+    url('/source/fonts/ubuntumonobolditalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}

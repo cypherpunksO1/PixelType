@@ -6,7 +6,7 @@
 }
 
 * {
-   font-family: 'Rubik Mono One';
+   font-family: Helvetica;
 }
 
 body {
@@ -40,6 +40,7 @@ header .logo-text::first-letter {
 }
 
 header .logo-text {
+    font-weight: 900;
 }
 
 a {
@@ -62,6 +63,7 @@ input {
     color: white;
     border: 1px solid var(--main-bg-color);
     outline: none;
+    font-family: Helvetica;
 }
 
 textarea {
@@ -73,30 +75,38 @@ textarea {
     width: calc(100% - 10px);
     height: 50px;
     margin-top: 20px;
+    font-family: Helvetica;
 }
 
 #titleInput {
     width: calc(100% - 10px);
     padding: 5px;
     font-size: 50px;
-    font-family: 'Rubik Mono One';
+    font-weight: 900;
 }
 
 
 #textInput {
     width: calc(100% - 10px);
     padding: 5px;
-    font-size: 30px;
-    font-family: 'Code New Roman';
+    font-size: 20px;
 }
 
+#authorInput {
+     font-size: 20px;
+}
 
 button {
     background: var(--main-bg-color);
     color: var(--inactive-color);
+    border: 3px solid var(--accent-color);
+    border-radius: 10px;
+    font-size: 15px;
     padding: 10px;
     transition: 0.5s;
     cursor: pointer;
+    font-family: Helvetica;
+    font-weight: 900;
 }
 
 button:hover {
