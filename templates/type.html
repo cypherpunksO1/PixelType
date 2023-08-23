@@ -26,7 +26,7 @@
     <div class="container-6">
         <h1 id="titleInput">{{ post.title }}</h1>
         <p style="margin-top: -15px;" id="authorInput">{{ post.author }} • {{ created }}</p>
-        <p id="textInput">{{ post.text }}</p>
+        <p id="textInput">{{ post.text | safe}}</p>
     </div>
 </div>
 </body>

@@ -16,6 +16,11 @@ async def create_post(post: pydantic_models.Post):
     if session.query(Post).filter(func.lower(Post.key).ilike(f"%{key.lower()}%")).count() > 0:
         key = '%s-%s' % (key, session.query(Post).filter(func.lower(Post.key).ilike(f"%{key.lower()}%")).count() + 1)
 
+    if not post.author:
+        post.author = 'Anonymously'
+
+    post.text = post.text.replace('\n', '<br>')
+
     post = Post(
         author=post.author,
         title=post.title,
