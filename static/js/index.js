@@ -10,7 +10,8 @@ async function createPost() {
         method: 'POST',
 	mode: 'cors',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': window.location.href
         },
         body: JSON.stringify({
             title: document.getElementById('titleInput').value,
@@ -18,6 +19,7 @@ async function createPost() {
             author: document.getElementById('authorInput').value
         })
     });
+
     let status = response.status;
     let result = await response.json();
 
