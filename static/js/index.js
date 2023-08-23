@@ -1,9 +1,24 @@
-const textarea = document.querySelector('textarea');
+function copyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    alert("Copy!");
+}
 
-textarea.addEventListener('input', function() {
-  this.style.height = 'auto';
-  this.style.height = this.scrollHeight + 'px';
-});
+function addHashToStart(str) {
+  if (str.charAt(0) !== "#") {
+    str = "#" + str;
+  }
+  return str;
+}
+
+function copyTitleToClipboard(title) {
+    copyToClipboard(window.location.href + addHashToStart(title.slice(1)));
+}
+
 
 async function createPost() {
     let response = await fetch('/api/v1/post/create', {

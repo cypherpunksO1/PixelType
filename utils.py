@@ -3,7 +3,7 @@ import transliterate
 import re
 
 
-def transform_title(title):
+def transliterate_title(title):
     current_date = datetime.datetime.now()
     day = current_date.day
     month = current_date.month
@@ -15,3 +15,16 @@ def transform_title(title):
     formatted_title = re.sub(r'[^\w\s]', '-', formatted_title)  # Remove punctuation
     transformed_title = f"{formatted_title}-{month}-{day}"
     return transformed_title
+
+
+def add_tag_to_title(text: str):
+    """
+        Add <a> to <h1> titles.
+    """
+    def replace_h1(match):
+        title = match.group(1)
+        return f"""<a href='#' onclick='copyTitleToClipboard("#{title}");' id='{title}' class='title'><h1>{title}</h1></a>"""
+
+    new_text = re.sub(r"<h1>(.*?)<\/h1>", replace_h1, text)
+
+    return new_text

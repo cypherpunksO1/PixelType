@@ -3,6 +3,8 @@
     --main-color: rgb(240, 240, 240);
     --accent-color: rgb(100, 100, 255);
     --inactive-color: rgb(200, 200, 200);
+    --h1-size: 40px;
+    --text-size: 15px;
 }
 
 * {
@@ -48,10 +50,29 @@ header .logo-text {
 }
 
 a {
+    color: rgb(100, 100, 200);
+    font-size: var(--text-size);
+}
+
+h1 {
+    font-size: var(--h1-size);
+}
+
+header a {
   color: inherit;
   text-decoration: none;
 }
 
+.title {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: var(--h1-size);
+}
+
+.title:hover::before {
+  content: "🔗 ";
+}
 
 .flex-center {
     display: flex;
@@ -80,11 +101,12 @@ textarea {
     height: 50px;
     margin-top: 20px;
     font-family: Helvetica;
+    font-size: var(--text-size);
 }
 
 #titleInput {
     width: calc(100% - 10px);
-    font-size: 50px;
+    font-size: var(--h1-size);
     font-weight: 900;
 }
 
@@ -92,23 +114,24 @@ textarea {
 #textInput {
     width: calc(100% - 10px);
     font-size: 20px;
+    font-size: var(--text-size);
 }
 
 #authorInput {
-     font-size: 15px;
+    font-size: 15px;
 }
 
 button {
     background: var(--main-bg-color);
     color: var(--inactive-color);
-    border: 3px solid var(--accent-color);
-    border-radius: 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
     font-size: 15px;
     padding: 10px;
     transition: 0.5s;
     cursor: pointer;
     font-family: Helvetica;
-    font-weight: 900;
+    font-size: var(--text-size);
 }
 
 button:hover {
