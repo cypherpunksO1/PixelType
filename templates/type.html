@@ -32,7 +32,7 @@
         <p style="margin-top: 15px; margin-left: 2px;" id="authorInput">
             {{ post.author }} • {{ created }}
         </p>
-        <h1 id="titleInput">{{ post.title }}</h1>
+        <h1 id="titleInput" style="margin-bottom: 60px;">{{ post.title }}</h1>
         <p id="textInput">{{ post.text | safe}}</p>
         <br>
         <button onclick="copyToClipboard(window.location.href);">/copy_link</button>

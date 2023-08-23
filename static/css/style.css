@@ -58,6 +58,8 @@ h1 {
     font-size: var(--h1-size);
     margin-top: 0;
     margin-bottom: 0;
+    padding: 0;
+    line-height: 7px;
 }
 
 header a {
@@ -110,6 +112,7 @@ textarea {
     width: calc(100% - 10px);
     font-size: var(--h1-size);
     font-weight: 900;
+    line-height: normal;
 }
 
 #textInput {
