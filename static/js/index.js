@@ -8,6 +8,7 @@ textarea.addEventListener('input', function() {
 async function createPost() {
     let response = await fetch('/api/v1/post/create/', {
         method: 'POST',
+	mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
