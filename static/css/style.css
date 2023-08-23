@@ -56,6 +56,8 @@ a {
 
 h1 {
     font-size: var(--h1-size);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 header a {
@@ -109,7 +111,6 @@ textarea {
     font-size: var(--h1-size);
     font-weight: 900;
 }
-
 
 #textInput {
     width: calc(100% - 10px);
