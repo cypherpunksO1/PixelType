@@ -34,10 +34,10 @@ async def create_post(post: pydantic_models.Post):
     return {'key': post.key}
 
 
-@posts_router.get('/api/v1/posts/')
-async def create_post(limit: int = 10, offset: int = 0):
-    if limit >= 50:
-        limit = 50
-    queryset = session.query(Post).limit(limit).offset(offset)
-
-    return [_.to_dict() for _ in queryset]
+# @posts_router.get('/api/v1/posts/')
+# async def create_post(limit: int = 10, offset: int = 0):
+#     if limit >= 50:
+#         limit = 50
+#     queryset = session.query(Post).limit(limit).offset(offset)
+#
+#     return [_.to_dict() for _ in queryset]
