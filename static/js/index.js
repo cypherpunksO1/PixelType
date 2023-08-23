@@ -8,11 +8,12 @@ textarea.addEventListener('input', function() {
 async function createPost() {
     let response = await fetch('/api/v1/post/create/', {
         method: 'POST',
-	mode: 'cors',
+	    mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': window.location.href
         },
+        host: 'pixeltype.egoryolkin.ru',
+        Origin: 'https://pixeltype.egoryolkin.ru',
         body: JSON.stringify({
             title: document.getElementById('titleInput').value,
             text: document.getElementById('textInput').value,
