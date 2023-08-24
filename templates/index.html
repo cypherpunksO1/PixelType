@@ -6,14 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/checkbox.css">
     <title>PixelType</title>
 </head>
 
 <header id="header">
     <div class="logo">
         <span class="logo-text">PixelType x Markdown</span>
-        <!--        <input type="checkbox" id="fontSwitch" /><label for="fontSwitch">Toggle</label>-->
     </div>
 </header>
 
@@ -24,16 +22,27 @@
 
 <div id="body" class="flex-center">
     <div class="container-6">
-        <input style="margin-top: 15px;" id="authorInput" type="text" placeholder="Author">
-        <input style="margin-top: 30px;" id="titleInput" type="text" placeholder="Title">
-        <textarea placeholder="Type your story" name="" id="textInput"></textarea>
+        <label for="authorInput"></label><input style="margin-top: 15px;" id="authorInput" type="text" placeholder="Author">
+        <label for="titleInput"></label><input style="margin-top: 30px;" id="titleInput" type="text" placeholder="Title">
+        <label for="textInput"></label><textarea placeholder="Type your story" name="" id="textInput"></textarea>
         <button onclick="insertText('#');"><img class="small-icon" src="/static/source/icons/title.png" alt=""></button>
-        <button onclick="insertText('**text**')"><img class="small-icon" src="/static/source/icons/bold.png" alt=""></button>
-        <button onclick="insertText('*text*');"><img class="small-icon" src="/static/source/icons/italic.png" alt=""></button>
-        <button onclick="insertText('![](Image Link)');"><img class="small-icon" src="/static/source/icons/img.png" alt=""></button>
-        <button onclick="insertText('`python\n\n`');"><img class="small-icon" src="/static/source/icons/code.png" alt=""></button>
-<!--        <button><img class="small-icon" src="/static/source/icons/upload.png" alt=""></button>-->
-<!--        <input type="file" accept="image/*">-->
+        <button onclick="insertText('**text**')"><img class="small-icon" src="/static/source/icons/bold.png" alt="">
+        </button>
+        <button onclick="insertText('*text*');"><img class="small-icon" src="/static/source/icons/italic.png" alt="">
+        </button>
+        <button onclick="insertText('![](Image Link)');"><img class="small-icon" src="/static/source/icons/img.png"
+                                                              alt=""></button>
+<!--        <button onclick="insertText('`python\n\n`');"><img class="small-icon" src="/static/source/icons/code.png"-->
+<!--                                                           alt=""></button>-->
+        <div class="input__wrapper">
+            <input name="file" type="file" id="input__file" class="input input__file" multiple>
+            <label for="input__file" class="input__file-button">
+                <span class="input__file-icon-wrapper">
+                    <img class="input__file-icon" src="/static/source/icons/upload.png"
+                         alt="Выбрать файл" style="width: 20px; height: 20px;"></span>
+                <span class="input__file-button-text">Upload photo</span>
+            </label>
+        </div>
         <br><br>
         <button onclick="createPost();">Publish</button>
     </div>
@@ -44,9 +53,9 @@
 <script>
     const textarea = document.querySelector('textarea');
 
-    textarea.addEventListener('input', function() {
-      this.style.height = 'auto';
-      this.style.height = this.scrollHeight + 'px';
+    textarea.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
     });
 
     function insertText(text) {
@@ -57,7 +66,6 @@
 
         const newText = value.substring(0, startPos) + text + value.substring(endPos, value.length);
         textarea.value = newText;
-
         textarea.focus();
     }
 

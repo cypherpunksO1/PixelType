@@ -9,10 +9,10 @@ function copyToClipboard(text) {
 }
 
 function addHashToStart(str) {
-  if (str.charAt(0) !== "#") {
-    str = "#" + str;
-  }
-  return str;
+    if (str.charAt(0) !== "#") {
+        str = "#" + str;
+    }
+    return str;
 }
 
 function copyTitleToClipboard(title) {
@@ -44,32 +44,24 @@ async function createPost() {
     }
 }
 
-//const fileInput = document.querySelector('input[type="file"]');
-//
-//fileInput.addEventListener('change', (event) => {
-//    const file = event.target.files[0];
-//    if (file) {
-//        async function uploadImage() {
-//        const formData = new FormData();
-//        formData.append('image', file);
-//
-//        try {
-//            const response = fetch('/api/v1/image/upload', {
-//                method: 'POST',
-//                body: formData
-//            });
-//            if (!response.ok) {
-//                throw new Error(`Error! status: ${response.status}`);
-//            }
-//
-//            const result = response.json();
-//            return result;
-//        } catch (err) {
-//            console.log(err);
-//        }
-//        const status = response.status;
-//        console.log(response.json());
-//    }
-//        await createPost();
-//    }
-//});
+async function uploadImage(file) {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+        const response = await fetch('/api/v1/image/upload', {
+            method: 'POST',
+            body: formData
+        });
+        return await response.json();
+    } catch (err) {}
+}
+
+const fileInput = document.querySelector('input[type="file"]');
+fileInput.addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const result = await uploadImage(file);
+        insertText('![](/' + result['path'] + ')')
+    }
+});

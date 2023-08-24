@@ -42,4 +42,4 @@ async def create_upload_files(image: UploadFile = File()):
         file_object.write(image.file.read())
 
     return {"image": image,
-            'key': file_location}
+            'path': file_location}
