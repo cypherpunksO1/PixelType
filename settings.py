@@ -7,7 +7,7 @@ errors_description = {
 
 templates = Jinja2Templates(directory="templates")
 
-origins = [
+ORIGINS = [
     "http://localhost",
     "http://localhost:8080",
     "http://127.0.0.1:8000",
@@ -16,3 +16,8 @@ origins = [
     "https://pixeltype.egoryolkin.ru:8000"
 ]
 
+STATIC_PATH = '/static'
+STATIC_DIR = 'static'
+
+MEDIA_PATH = '/media'
+MEDIA_DIR = 'media'

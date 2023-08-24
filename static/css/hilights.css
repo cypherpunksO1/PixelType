@@ -1,0 +1,35 @@
+.hljs {
+    border-radius: 5px;
+    background: rgb(50, 50, 50) !important;
+    color: white !important;
+}
+
+pre {
+    padding-bottom: 20px;
+}
+
+.hljs-built_in {
+    color: rgb(100, 250, 100) !important;
+}
+
+.hljs-string {
+    color: rgb(100, 250, 100) !important;
+}
+
+.hljs-name {
+    color: rgb(213, 183, 120) !important;
+    font-weight: 500 !important;
+}
+
+.hljs-tag {
+    color: rgb(213, 183, 120) !important;
+}
+
+.hljs-section {
+    color: rgb(250, 100, 100) !important;
+}
+
+.hljs-keyword {
+    color: rgb(250, 200, 100) !important;
+    font-weight: 500 !important;
+}

@@ -13,5 +13,6 @@ class Post(Base, SerializerMixin):
     author = Column(String)
     title = Column(String)
     text = Column(String)
+    views = Column(Integer, default=0)
 
     created = Column(Integer)

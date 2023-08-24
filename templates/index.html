@@ -18,9 +18,6 @@
 </header>
 
 <style>
-    * {
-        font-family: Helvetica;
-    }
 </style>
 
 <body>
@@ -30,7 +27,15 @@
         <input style="margin-top: 15px;" id="authorInput" type="text" placeholder="Author">
         <input style="margin-top: 30px;" id="titleInput" type="text" placeholder="Title">
         <textarea placeholder="Type your story" name="" id="textInput"></textarea>
-        <button onclick="createPost();">/publish</button>
+        <button onclick="insertText('#');"><img class="small-icon" src="/static/source/icons/title.png" alt=""></button>
+        <button onclick="insertText('**text**')"><img class="small-icon" src="/static/source/icons/bold.png" alt=""></button>
+        <button onclick="insertText('*text*');"><img class="small-icon" src="/static/source/icons/italic.png" alt=""></button>
+        <button onclick="insertText('![](Image Link)');"><img class="small-icon" src="/static/source/icons/img.png" alt=""></button>
+        <button onclick="insertText('`python\n\n`');"><img class="small-icon" src="/static/source/icons/code.png" alt=""></button>
+<!--        <button><img class="small-icon" src="/static/source/icons/upload.png" alt=""></button>-->
+<!--        <input type="file" accept="image/*">-->
+        <br><br>
+        <button onclick="createPost();">Publish</button>
     </div>
 </div>
 </body>
@@ -43,5 +48,18 @@
       this.style.height = 'auto';
       this.style.height = this.scrollHeight + 'px';
     });
+
+    function insertText(text) {
+        const textarea = document.getElementById('textInput');
+        const startPos = textarea.selectionStart;
+        const endPos = textarea.selectionEnd;
+        const value = textarea.value;
+
+        const newText = value.substring(0, startPos) + text + value.substring(endPos, value.length);
+        textarea.value = newText;
+
+        textarea.focus();
+    }
+
 </script>
 </html>

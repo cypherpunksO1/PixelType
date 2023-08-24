@@ -37,11 +37,39 @@ async function createPost() {
     let status = response.status;
     let result = await response.json();
 
-    console.log(result);
-
     if (status === 200) {
         location.href = '/type/' + result['key'];
     } else {
 
     }
 }
+
+//const fileInput = document.querySelector('input[type="file"]');
+//
+//fileInput.addEventListener('change', (event) => {
+//    const file = event.target.files[0];
+//    if (file) {
+//        async function uploadImage() {
+//        const formData = new FormData();
+//        formData.append('image', file);
+//
+//        try {
+//            const response = fetch('/api/v1/image/upload', {
+//                method: 'POST',
+//                body: formData
+//            });
+//            if (!response.ok) {
+//                throw new Error(`Error! status: ${response.status}`);
+//            }
+//
+//            const result = response.json();
+//            return result;
+//        } catch (err) {
+//            console.log(err);
+//        }
+//        const status = response.status;
+//        console.log(response.json());
+//    }
+//        await createPost();
+//    }
+//});

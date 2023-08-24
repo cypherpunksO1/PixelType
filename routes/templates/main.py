@@ -5,16 +5,16 @@ from settings import templates
 from models.db_models import Post
 import datetime
 
-templates_router = APIRouter()
+router = APIRouter()
 
 
-@templates_router.get("/")
+@router.get("/")
 async def render_html(request: Request):
     """ Main types page. """
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@templates_router.get("/type/{key}/")
+@router.get("/type/{key}/")
 async def render_html(request: Request, key: str):
     """ Get post with key. """
 
@@ -22,6 +22,8 @@ async def render_html(request: Request, key: str):
 
     if post:
         created = str(datetime.datetime.fromtimestamp(post.created).date())
+        post.views += 1
+        session.commit()
 
         # TODO: Выпилить created из response
 
