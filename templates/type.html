@@ -38,7 +38,7 @@
             <span>{{ post.author }}</span> • <span>{{ created }}</span> • <span>{{ post.views }} views</span>
         </p>
         <h1 id="titleInput" style="margin-bottom: 60px;">{{ post.title }}</h1>
-        <p id="textInput">{{ post.text | safe}}</p>
+        <p id="textInput">{{ post.text | safe }}</p>
         <br>
         <button class="copyLinkButton" onclick="copyToClipboard(window.location.href);">🔗</button>
     </div>
@@ -47,49 +47,48 @@
 <script src="/static/js/index.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-  // Найти все блоки с тегом code
-  var codeBlocks = document.querySelectorAll("code");
+    document.addEventListener("DOMContentLoaded", function () {
+        // Найти все блоки с тегом code
+        var codeBlocks = document.querySelectorAll("code");
 
-  for (var i = 0; i < codeBlocks.length; i++) {
-    var codeBlock = codeBlocks[i];
+        for (var i = 0; i < codeBlocks.length; i++) {
+            var codeBlock = codeBlocks[i];
 
-    // Создать кнопку "Копировать код"
-    var copyButton = document.createElement("a");
-    copyButton.style.cursor = "pointer";
-    copyButton.style.marginBottom = "10px";
-    copyButton.innerHTML = "Copy";
+            // Создать кнопку "Копировать код"
+            var copyButton = document.createElement("a");
+            copyButton.style.cursor = "pointer";
+            copyButton.style.marginBottom = "10px";
+            copyButton.innerHTML = "Copy";
 
-    copyButton.classList.add("copy-button");
-    codeBlock.parentNode.insertBefore(copyButton, codeBlock);
+            copyButton.classList.add("copy-button");
+            codeBlock.parentNode.insertBefore(copyButton, codeBlock);
 
-    // Добавить обработчик события для кнопки "Копировать код"
-    copyButton.addEventListener("click", function() {
-      // Выделить текст в блоке с тегом code
-      var selection = window.getSelection();
-      var range = document.createRange();
-      range.selectNodeContents(this.nextElementSibling);
-      selection.removeAllRanges();
-      selection.addRange(range);
+            // Добавить обработчик события для кнопки "Копировать код"
+            copyButton.addEventListener("click", function () {
+                // Выделить текст в блоке с тегом code
+                var selection = window.getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(this.nextElementSibling);
+                selection.removeAllRanges();
+                selection.addRange(range);
 
-      // Скопировать выделенный текст в буфер обмена
-      document.execCommand("copy");
+                // Скопировать выделенный текст в буфер обмена
+                document.execCommand("copy");
 
-      // Очистить выделение текста
-      selection.removeAllRanges();
+                // Очистить выделение текста
+                selection.removeAllRanges();
 
-      // Изменить текст кнопки на "Скопировано!"
-      this.innerHTML = "Copied to clipboard!";
+                // Изменить текст кнопки на "Скопировано!"
+                this.innerHTML = "Copied to clipboard!";
 
-      // Вернуть исходный текст кнопки через 3 секунды
-      var button = this;
-      setTimeout(function() {
-        button.innerHTML = "Копировать код";
-      }, 3000);
+                // Вернуть исходный текст кнопки через 3 секунды
+                var button = this;
+                setTimeout(function () {
+                    button.innerHTML = "Копировать код";
+                }, 3000);
+            });
+        }
     });
-  }
-});
-
 </script>
 </body>
 </html>

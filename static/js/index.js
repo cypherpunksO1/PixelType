@@ -21,6 +21,8 @@ function copyTitleToClipboard(title) {
 
 
 async function createPost() {
+    localStorage.setItem('author', document.getElementById('authorInput').value);
+
     let response = await fetch('/api/v1/post/create', {
         method: 'POST',
         headers: {
@@ -39,6 +41,9 @@ async function createPost() {
 
     if (status === 200) {
         location.href = '/type/' + result['key'];
+
+        localStorage.removeItem('text')
+        localStorage.removeItem('title')
     } else {
 
     }
@@ -54,7 +59,8 @@ async function uploadImage(file) {
             body: formData
         });
         return await response.json();
-    } catch (err) {}
+    } catch (err) {
+    }
 }
 
 const fileInput = document.querySelector('input[type="file"]');
@@ -63,5 +69,8 @@ fileInput.addEventListener('change', async (event) => {
     if (file) {
         const result = await uploadImage(file);
         insertText('![](/' + result['path'] + ')')
+
+        localStorage.setItem('text', document.getElementById('textInput').value);
+        localStorage.setItem('title', document.getElementById('titleInput').value);
     }
 });
