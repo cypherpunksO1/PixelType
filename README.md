@@ -19,5 +19,5 @@ python3 -m pip install -r requirements.txt
 ```
 
 ```bash
-
+uvicorn src.main:app --reload
 ```
