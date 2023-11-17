@@ -23,6 +23,12 @@ function copyTitleToClipboard(title) {
 async function createPost() {
     localStorage.setItem('author', document.getElementById('authorInput').value);
 
+    let author = document.getElementById('authorInput').value;
+        
+    if (author.length === 0) {
+        author = undefined;
+    } 
+
     let response = await fetch('/api/v1/post/create', {
         method: 'POST',
         headers: {
@@ -32,7 +38,7 @@ async function createPost() {
         body: JSON.stringify({
             title: document.getElementById('titleInput').value,
             text: document.getElementById('textInput').value,
-            author: document.getElementById('authorInput').value
+            author: author
         })
     });
 
@@ -54,7 +60,7 @@ async function uploadImage(file) {
     formData.append('image', file);
 
     try {
-        const response = await fetch('/api/v1/image/upload', {
+        const response = await fetch('/api/v1/post/image/upload', {
             method: 'POST',
             body: formData
         });

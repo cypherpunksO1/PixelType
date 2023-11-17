@@ -1,37 +1,35 @@
 from fastapi import APIRouter
-from fastapi import Request, HTTPException
-from core.db.database import session
-from settings import templates
-from models.db_models import Post
-import datetime
+from fastapi import (Request, 
+                     HTTPException)
 
-router = APIRouter()
+from core.conf.config import templates
+
+from core.services.posts_service import post_service
+
+templates_router = APIRouter()
 
 
-@router.get("/")
+@templates_router.get("/")
 async def render_html(request: Request):
     """ Main types page. """
+    
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@router.get("/type/{key}/")
+@templates_router.get("/type/{key}/")
 async def render_html(request: Request, key: str):
     """ Get post with key. """
 
-    post = session.query(Post).filter_by(key=key).first()
+    post = post_service.get_post(key=key)
 
     if post:
-        created = str(datetime.datetime.fromtimestamp(post.created).date())
-        post.views += 1
-        session.commit()
-
         # TODO: Выпилить created из response
 
         return templates.TemplateResponse(
             "type.html",
             {"request": request,
              'post': post,
-             'created': created})
+             'created': post.created.date()})
     else:
         return HTTPException(
             status_code=404

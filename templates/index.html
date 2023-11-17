@@ -1,55 +1,101 @@
 <!doctype html>
-<html lang="en" translate="no">
+<html lang="en" translate="no" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/file_input.css" type="text/css">
     <title>PixelType</title>
 </head>
 
-<header id="header">
-    <div class="logo">
-        <span class="logo-text" style="font-family: Helvetica; font-weight: 500;">pixeltype</span>
+<nav class="navbar bg-body-tertiary" style="margin-bottom: 50px;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center justify-content-center" style="gap: 10px;" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             width="32" 
+             height="32" 
+             fill="currentColor" 
+             class="bi bi-braces-asterisk" 
+             viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C2.25 2 1.49 2.759 1.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6ZM14.886 7.9v.164c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456v-1.3c-1.114 0-1.49-.362-1.49-1.456V4.352C14.51 2.759 13.75 2 12.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6ZM7.5 11.5V9.207l-1.621 1.621-.707-.707L6.792 8.5H4.5v-1h2.293L5.172 5.879l.707-.707L7.5 6.792V4.5h1v2.293l1.621-1.621.707.707L9.208 7.5H11.5v1H9.207l1.621 1.621-.707.707L8.5 9.208V11.5h-1Z"/>
+          </svg>
+      </a>
+      <h4>
+        PixelType
+      </h4>
     </div>
-</header>
+</nav>
 
 <style>
+    textarea {
+        background: transparent;
+        border: 1px solid var(--main-bg-color);
+        outline: none;
+        resize: none;
+        width: calc(100% - 10px);
+        height: 50px;
+        margin-top: 20px;
+        font-family: var(--text-font);
+        font-size: var(--text-size);
+    }
+    
+    button {
+        padding: 10px;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .small-icon {
+        width: 15px;
+        height: 15px;
+    }
 </style>
 
 <body>
+<div id="body" class="d-flex align-items-center justify-content-center">
+    <div class="container-6" style="max-width: 800px; width: 100%; padding: 20px;">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="titleInput" placeholder="name@example.com">
+            <label for="titleInput">Title</label>
+        </div>
+        <input class="form-control form-control" id="authorInput" type="text" placeholder="Author">
+        <!-- <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="authorInput" placeholder="name@example.com">
+            <label for="authorInput">Author</label>
+        </div> -->
+        <label for="textInput"></label>
+        <textarea placeholder="Type your story" name="" id="textInput"></textarea>
 
-<div id="body" class="flex-center">
-    <div class="container-6">
-        <label for="authorInput"></label><input style="margin-top: 15px;" id="authorInput" type="text"
-                                                placeholder="Author">
-        <label for="titleInput"></label><input style="margin-top: 30px;" id="titleInput" type="text"
-                                               placeholder="Title">
-        <label for="textInput"></label><textarea placeholder="Type your story" name="" id="textInput"></textarea>
-        <button onclick="insertText('#');"><img class="small-icon" src="/static/source/icons/title.png" alt=""></button>
-        <button onclick="insertText('**text**')"><img class="small-icon" src="/static/source/icons/bold.png" alt="">
-        </button>
-        <button onclick="insertText('*text*');"><img class="small-icon" src="/static/source/icons/italic.png" alt="">
-        </button>
-        <button onclick="insertText('![](Image Link)');"><img class="small-icon" src="/static/source/icons/img.png"
-                                                              alt=""></button>
-        <!--        <button onclick="insertText('`python\n\n`');"><img class="small-icon" src="/static/source/icons/code.png"-->
-        <!--                                                           alt=""></button>-->
         <div class="input__wrapper">
             <input name="file" type="file" id="input__file" class="input input__file" multiple>
             <label for="input__file" class="input__file-button">
-                <span class="input__file-icon-wrapper">
+                <span class="input__file-icon-wrapper" style="background: gray; border-radius: 5px; padding: 20px">
                     <img class="input__file-icon" src="/static/source/icons/upload.png"
                          alt="Выбрать файл" style="width: 20px; height: 20px;"></span>
-                <span class="input__file-button-text">Upload photo</span>
+                <span class="input__file-button-text">Insert Image</span>
             </label>
         </div>
         <br><br>
-        <button onclick="createPost();">Publish</button>
+        <button type="button" class="btn btn-secondary" onclick="insertText('#');"><img class="small-icon" src="/static/source/icons/title.png" alt=""></button>
+        <button type="button" class="btn btn-secondary" onclick="insertText('**text**')"><img class="small-icon" src="/static/source/icons/bold.png" alt="">
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="insertText('*text*');"><img class="small-icon" src="/static/source/icons/italic.png" alt="">
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="insertText('![](Image Link)');"><img class="small-icon" src="/static/source/icons/img.png"
+                                                              alt=""></button>
+        <br><br>
+        <button type="button" class="btn btn-success" onclick="createPost();">Publish</button>
     </div>
 </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
 <script src="/static/js/index.js"></script>
 <script>

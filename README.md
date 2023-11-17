@@ -1,20 +1,23 @@
+![](readme_src/preview.jpeg)
+
 # PixelType
 
 Service for writing anonymous text entries without registration.
 
-# Run
-
-run the following commands in your terminal:
+# Go >>>
 
 ```bash
-cd PixelType
+python3 -m venv env
 ```
 
 ```bash
-pip3 install -r requirements.txt
+source env/bin/activate
 ```
 
 ```bash
-uvicorn run:app --reload
+python3 -m pip install -r requirements.txt
 ```
 
+```bash
+
+```

@@ -1,0 +1,75 @@
+.input__wrapper {
+    max-width: 150px;
+    text-align: center;
+    margin: 0;
+}
+
+.input__file {
+    max-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    height: 10px;
+    width: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.input__file-icon-wrapper {
+    height: 5px;
+    width: 35px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.input__file-button-text {
+    max-width: 100px;
+    line-height: 1;
+    margin-top: 1px;
+}
+
+.input__file-button {
+    padding: 0 40px 0 10px;
+    max-width: 200px;
+    background: var(--accent-color);
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.navbar {
+    width: 100vw;
+    position: sticky;
+}
+
+
+
+@media (max-width: 1000px) {
+    .container-6 {
+        width: calc(100% - 100px);
+        padding: 20px;
+    }
+
+    .logoName {
+        display: none;
+    }
+
+    img {
+        width: calc(100% - 100px);
+    }
+}
