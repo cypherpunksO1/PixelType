@@ -8,7 +8,10 @@ from src.routers import (get_api_routers,
 
 from core.conf import config
 
-app = FastAPI()
+app = FastAPI(title="PixelType", 
+              debug=False, 
+              description="Anonimous articles service", 
+              version="1.5")
 
 app.mount(config.STATIC_PATH, StaticFiles(directory=config.STATIC_DIR), name="static")
 app.mount(config.MEDIA_PATH, StaticFiles(directory=config.MEDIA_DIR), name="media")
