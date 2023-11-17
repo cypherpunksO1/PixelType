@@ -16,5 +16,4 @@ class PostResponseSchema:
 
 @dataclass
 class ImageResponseSchema:
-    image: str | None = None
     path: str | None = None
