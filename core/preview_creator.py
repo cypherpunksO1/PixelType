@@ -234,8 +234,8 @@ def make_preview(title: str,
         return raw_font, raw_text
 
     font, text = draw_text(raw_text=title,
-                           font_size=abs(flags.get('ts', 180)),
-                           line_width=abs(flags.get('tlw', 30)),
+                           font_size=abs(flags.get('ts', 140)),
+                           line_width=abs(flags.get('tlw', 28)),
                            offset=flags.get('to', 0),
                            raw_font=str(
                             flags.get('tf', 'bold'))
@@ -243,7 +243,7 @@ def make_preview(title: str,
                            .replace('1', 'light'))
     
     draw_text(raw_text=description,
-              font_size=abs(flags.get('ds', 100)),
+              font_size=abs(flags.get('ds', 70)),
               line_width=abs(flags.get('dlw', 50)),
               offset=250 + (100 * text.count("\n")),
               raw_font=str(flags.get('df', 'light'))
