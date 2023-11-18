@@ -35,6 +35,7 @@ class PostService:
                  key: aliases.PostKey
                  ) -> Post:
         models = self.gateway.filter_by(key=key)
+        
         if models:
             model = self.gateway.get(pk=models[0].pk)
             model.views += 1

@@ -9,7 +9,7 @@ from src.routers import (get_api_routers,
 from core.conf import config
 
 app = FastAPI(title="PixelType", 
-              debug=False, 
+              debug=config.DEBUG, 
               description="Anonimous articles service", 
               version="1.5")
 

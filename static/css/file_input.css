@@ -51,25 +51,3 @@
     border-radius: 3px;
     cursor: pointer;
 }
-
-.navbar {
-    width: 100vw;
-    position: sticky;
-}
-
-
-
-@media (max-width: 1000px) {
-    .container-6 {
-        width: calc(100% - 100px);
-        padding: 20px;
-    }
-
-    .logoName {
-        display: none;
-    }
-
-    img {
-        width: calc(100% - 100px)!important;
-    }
-}

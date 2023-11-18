@@ -21,6 +21,8 @@ async def render_html(request: Request, key: str):
     """ Get post with key. """
 
     post = post_service.get_post(key=key)
+    
+    print(post, key)
 
     if post:
         # TODO: Выпилить created из response

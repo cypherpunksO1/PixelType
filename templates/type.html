@@ -7,13 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta property="og:image" content="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fakkordam.ru%2Ffiles3%2Fakkordy-tekst-dora.jpg&f=1&nofb=1&ipt=d1ccb67f5a75ab59ff7ef39ba752bd08e6332c2c778cd7af79c1de2a741616c2&ipo=images" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/file_input.css" type="text/css">
     <link rel="stylesheet" href="/static/css/hilights.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
     <title>PixelType</title>
 </head>
 
-<nav class="navbar bg-body-tertiary" style="margin-bottom: 50px;">
+<nav class="navbar bg-body-tertiary">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center justify-content-center" style="gap: 10px;" href="/">
         <svg xmlns="http://www.w3.org/2000/svg" 
@@ -42,26 +46,28 @@
 
     img {
         width: var(--window-size);
+        border-radius: 15px;
+        width: 100%;
     }
 </style>
 
 <body>
 
-<div id="body" class="d-flex align-items-center justify-content-center">
+<div id="body" style="padding-bottom: 150px; padding-top: 20px;" class="d-flex align-items-center justify-content-center">
     <div class="container-6" style="width: 800px;">
         <p style="margin-top: 15px; margin-left: 2px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;" id="authorInput">
-            <span><mark style="border-radius: 5px; padding: 7px 7px 7px 7px">{{ post.author }}</mark></span> • 
-            <span><mark style="border-radius: 5px; padding: 7px 7px 7px 7px">created {{ created }}</mark></span> • 
-            <span><mark style="border-radius: 5px; padding: 7px 7px 7px 7px">{{ post.views }} eyes</mark></span> •
-            <mark
-                onclick="copyToClipboard(window.location.href);"
-                style="border-radius: 5px; padding: 5px; cursor: pointer; background: rgb(0, 149, 255);">
-                Copy link 🔗
-            </mark>
+            <span><mark class="roman" style="border-radius: 5px; padding: 7px 7px 7px 7px">{{ post.author }}</mark></span> • 
+            <span><span style="border-radius: 5px; padding: 7px 7px 7px 7px">created {{ created }}</mark></span> • 
+            <span><span style="border-radius: 5px; padding: 7px 7px 7px 7px">{{ post.views }} eyes</mark></span><br>
         </p>
         <h1 id="titleInput" class="display-4" style="font-weight: 700;">{{ post.title }}</h1>
-        
         <br>
+        <button
+            class="btn btn-outline-secondary"
+            onclick="copyToClipboard(window.location.href);">
+            Copy link 🔗
+        </button>
+        <br><br>
         <p class="text" style="max-width: var(--window-size);">{{ post.text | safe }}</p>
     </div>
 </div>

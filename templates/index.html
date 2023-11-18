@@ -9,10 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/file_input.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
     <title>PixelType</title>
 </head>
 
-<nav class="navbar bg-body-tertiary" style="margin-bottom: 50px;">
+<nav class="navbar bg-body-tertiary">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center justify-content-center" style="gap: 10px;" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" 
@@ -37,16 +38,21 @@
         outline: none;
         resize: none;
         width: calc(100% - 10px);
-        height: 50px;
+        min-height: 50px;
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    input {
+        background: transparent;
+        border: 1px solid var(--main-bg-color);
+        outline: none;
+        resize: none;
+        width: calc(100% - 10px);
+        min-height: 50px;
         margin-top: 20px;
         font-family: var(--text-font);
         font-size: var(--text-size);
-    }
-    
-    button {
-        padding: 10px;
-        transition: 0.5s;
-        cursor: pointer;
     }
 
     .small-icon {
@@ -58,11 +64,11 @@
 <body>
 <div id="body" class="d-flex align-items-center justify-content-center">
     <div class="container-6" style="max-width: 800px; width: 100%; padding: 20px;">
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="titleInput" placeholder="name@example.com">
-            <label for="titleInput">Title</label>
-        </div>
-        <input class="form-control form-control" id="authorInput" type="text" placeholder="Author">
+        <!-- <input type="text" class="form-control" id="titleInput" placeholder="Title"> -->
+        <label for="textInput"></label>
+        <textarea placeholder="Title" class="display-4 fb" style="height: 80px; padding: 0px;" name="" id="titleInput"></textarea>
+        <br>
+        <input class="roman" id="authorInput" type="text" placeholder="Author">
         <!-- <div class="form-floating mb-3">
             <input type="email" class="form-control" id="authorInput" placeholder="name@example.com">
             <label for="authorInput">Author</label>
@@ -74,19 +80,30 @@
             <input name="file" type="file" id="input__file" class="input input__file" multiple>
             <label for="input__file" class="input__file-button">
                 <span class="input__file-icon-wrapper" style="background: gray; border-radius: 5px; padding: 20px">
-                    <img class="input__file-icon" src="/static/source/icons/upload.png"
-                         alt="Выбрать файл" style="width: 20px; height: 20px;"></span>
+                    <!-- <img class="input__file-icon" src="/static/source/icons/upload.png"
+                         alt="Выбрать файл" style="width: 20px; height: 40px;"> -->
+                         Get
+                        </span>
                 <span class="input__file-button-text">Insert Image</span>
             </label>
         </div>
         <br><br>
-        <button type="button" class="btn btn-secondary" onclick="insertText('#');"><img class="small-icon" src="/static/source/icons/title.png" alt=""></button>
-        <button type="button" class="btn btn-secondary" onclick="insertText('**text**')"><img class="small-icon" src="/static/source/icons/bold.png" alt="">
+        <button type="button" class="btn btn-secondary" onclick="insertText('#');">
+            <!-- <img class="small-icon" src="/static/source/icons/title.png" alt=""> -->
+            Title
         </button>
-        <button type="button" class="btn btn-secondary" onclick="insertText('*text*');"><img class="small-icon" src="/static/source/icons/italic.png" alt="">
+        <button type="button" class="btn btn-secondary" onclick="insertText('**text**')">
+            <!-- <img class="small-icon" src="/static/source/icons/bold.png" alt=""> -->
+            Bold
         </button>
-        <button type="button" class="btn btn-secondary" onclick="insertText('![](Image Link)');"><img class="small-icon" src="/static/source/icons/img.png"
-                                                              alt=""></button>
+        <button type="button" class="btn btn-secondary" onclick="insertText('*text*');">
+            <!-- <img class="small-icon" src="/static/source/icons/italic.png" alt=""> -->
+            Italic
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="insertText('![](Image Link)');">
+            <!-- <img class="small-icon" src="/static/source/icons/img.png"alt=""> -->
+            Img
+        </button>
         <br><br>
         <button type="button" class="btn btn-success" onclick="createPost();">Publish</button>
     </div>
@@ -103,9 +120,19 @@
     document.getElementById('textInput').value = localStorage.getItem('text');
 </script>
 <script>
-    const textarea = document.querySelector('textarea');
+    const title_textarea = document.getElementById('titleInput');
 
-    textarea.addEventListener('input', function () {
+    title_textarea.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+
+        localStorage.setItem('text', document.getElementById('textInput').value);
+        localStorage.setItem('title', document.getElementById('titleInput').value);
+    });
+
+    const text_textarea = document.getElementById('textInput');
+
+    text_textarea.addEventListener('input', function () {
         this.style.height = 'auto';
         this.style.height = this.scrollHeight + 'px';
 

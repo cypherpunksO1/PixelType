@@ -7,6 +7,8 @@ errors_description = {
 
 templates = Jinja2Templates(directory="templates")
 
+DEBUG = True
+
 ORIGINS = [
     "http://localhost",
     "http://localhost:8080",
