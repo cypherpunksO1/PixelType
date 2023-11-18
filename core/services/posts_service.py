@@ -9,6 +9,7 @@ from core.models import Post
 from core.schemas import PostScheme
 from core import exceptions
 from core.utils import transliterate_str, markdown_to_html
+from core import preview_creator
 
 
 class PostService:
@@ -28,6 +29,11 @@ class PostService:
             model.text
         )
         self.gateway.create(model)
+        
+        preview_creator.make_preview(
+            title=model.title, 
+            filename=model.key
+        )
         
         return aliases.PostKey(model.key)
     
