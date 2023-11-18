@@ -1,42 +1,16 @@
-<!doctype html>
-<html lang="en" translate="no" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <meta property="og:title" content="PixelType">
-    <meta property="og:site_name" content="PixelType">
-    <meta property="og:description" content="{{ post.text | striptags }}">
-    <meta property="og:image" content="/media/{{ post.key }}.jpeg">
+{% extends 'index.html' %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/file_input.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/hilights.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-    <title>PixelType</title>
-</head>
+{% block content %}
 
-<nav class="navbar bg-body-tertiary">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center justify-content-center" style="gap: 10px;" href="/">
-        <svg xmlns="http://www.w3.org/2000/svg" 
-             width="32" 
-             height="32" 
-             fill="currentColor" 
-             class="bi bi-braces-asterisk" 
-             viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C2.25 2 1.49 2.759 1.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6ZM14.886 7.9v.164c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456v-1.3c-1.114 0-1.49-.362-1.49-1.456V4.352C14.51 2.759 13.75 2 12.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6ZM7.5 11.5V9.207l-1.621 1.621-.707-.707L6.792 8.5H4.5v-1h2.293L5.172 5.879l.707-.707L7.5 6.792V4.5h1v2.293l1.621-1.621.707.707L9.208 7.5H11.5v1H9.207l1.621 1.621-.707.707L8.5 9.208V11.5h-1Z"/>
-          </svg>
-      </a>
-      <h4 class="logoName">
-        PixelType
-      </h4>
-    </div>
-</nav>
+<meta property="og:title" content="PixelType">
+<meta property="og:site_name" content="PixelType">
+<meta property="og:description" content="{{ post.text | striptags }}">
+<meta property="og:image" content="/media/{{ post.key }}.jpeg">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/file_input.css" type="text/css">
+<link rel="stylesheet" href="/static/css/hilights.css" type="text/css">
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
 <style>
     :root {
@@ -71,7 +45,7 @@
             Copy link 🔗
         </button>
         <br><br>
-        <p class="text" style="max-width: var(--window-size);">{{ post.text | safe }}</p>
+        <p class="text" style="word-wrap: break-word;">{{ post.text | safe }}</p>
     </div>
 </div>
 
@@ -121,5 +95,4 @@
         }
     });
 </script>
-</body>
-</html>
+{% endblock %}

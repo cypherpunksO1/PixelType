@@ -11,9 +11,9 @@ templates_router = APIRouter()
 
 @templates_router.get("/")
 async def render_html(request: Request):
-    """ Main types page. """
+    """ Create types page. """
     
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("create.html", {"request": request})
 
 
 @templates_router.get("/type/{key}/")
@@ -21,12 +21,8 @@ async def render_html(request: Request, key: str):
     """ Get post with key. """
 
     post = post_service.get_post(key=key)
-    
-    print(post, key)
 
     if post:
-        # TODO: Выпилить created из response
-
         return templates.TemplateResponse(
             "type.html",
             {"request": request,

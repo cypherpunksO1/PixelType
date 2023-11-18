@@ -17,19 +17,15 @@ class PostGateway(AbstractGateway):
         return self.session.query(Post).get(pk)
     
     def get_all(self) -> list[Post]:
-        return self.session.query(Post).all
+        return self.session.query(Post).all()
     
     def filter_by(self, **kwargs) -> list[Post]:
         return self.session.query(Post).filter_by(**kwargs).all()
 
 
     def create(self, post: Post):
-        try:
-            self.session.add(post)
-            self.session.commit()
-        except exc.IntegrityError:
-            self.session.rollback()
-            raise exceptions.UserAlreadyExists()
+        self.session.add(post)
+        self.session.commit()
 
     def update(self, pk: int, post: Post):
         for key, value in post.to_dict().items():

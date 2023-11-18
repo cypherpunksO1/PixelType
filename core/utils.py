@@ -49,19 +49,6 @@ def add_pre_to_code(html: str):
     return new_text
 
 
-def add_tag_to_title(html: str):
-    """ Add <a> to <h1> titles. """
-
-    def replace_h1(match):
-        title = match.group(1)
-        return f"""<a href='#' onclick='copyTitleToClipboard("#{title}");'
-                    id='{title}' class='title'><h1>{title}</h1></a>"""
-
-    new_text = re.sub(r"<h1>(.*?)<\/h1>", replace_h1, add_pre_to_code(html))
-
-    return new_text
-
-
 def transliterate_str(title):
     """
         Return new key if it is not exists 
@@ -82,8 +69,8 @@ def transliterate_str(title):
 
 
 def replace_urls(text):
-    url_pattern = re.compile(r'(http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)|((?<![http://])(?<![https://])[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)')
-    return url_pattern.sub(r'<a target="_blank" href="https://\g<0>">\g<0></a>', text)
+    pattern = re.compile(r'\[([^\]]+)\]')
+    return pattern.sub(lambda m: f'<a target="_blank" href="{"https://" if not m.group(1).startswith("http") else ""}{m.group(1)}">{m.group(1)}</a>', text)
 
 
 def markdown_to_html(text):
@@ -92,9 +79,10 @@ def markdown_to_html(text):
         HTML and Shielding. 
     """
     
-    return add_tag_to_title(
-        replace_urls(
-            markdown.markdown(html.escape(text))
-            .replace('\n', '<br>')
-        )
-    )
+    text = markdown.markdown(html.escape(text))
+    text = text.replace('\n', '<br>')
+    # text = text.replace("---", "<br><hr><br>")
+    text = text.replace("**", "<center><span style='font-size: 30px;'>***</span></center>")
+    text = replace_urls(text)
+    
+    return text
