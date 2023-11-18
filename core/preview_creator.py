@@ -235,7 +235,7 @@ def make_preview(title: str,
 
     font, text = draw_text(raw_text=title,
                            font_size=abs(flags.get('ts', 180)),
-                           line_width=abs(flags.get('tlw', 50)),
+                           line_width=abs(flags.get('tlw', 30)),
                            offset=flags.get('to', 0),
                            raw_font=str(
                             flags.get('tf', 'bold'))
