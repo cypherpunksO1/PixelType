@@ -30,8 +30,11 @@ class PostService:
         )
         self.gateway.create(model)
         
+        preview_description = f"{model.author}, {model.created.date()}"
+        
         preview_creator.make_preview(
             title=model.title, 
+            description=preview_description,
             filename=model.key
         )
         

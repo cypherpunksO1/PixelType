@@ -245,7 +245,7 @@ def make_preview(title: str,
     draw_text(raw_text=description,
               font_size=abs(flags.get('ds', 100)),
               line_width=abs(flags.get('dlw', 50)),
-              offset=flags.get('do', 50 * text.count("\n")),
+              offset=250 + (100 * text.count("\n")),
               raw_font=str(flags.get('df', 'light'))
                            .replace('0', 'bold')
                            .replace('1', 'light'))

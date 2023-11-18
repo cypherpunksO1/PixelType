@@ -58,6 +58,7 @@
 
 <div id="body" style="padding-bottom: 150px; padding-top: 20px;" class="d-flex align-items-center justify-content-center">
     <div class="container-6" style="width: 800px;">
+        <p>{{ post.text | striptags }}</p>
         <p style="margin-top: 15px; margin-left: 2px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;" id="authorInput">
             <span><mark class="roman" style="border-radius: 5px; padding: 7px 7px 7px 7px">{{ post.author }}</mark></span> • 
             <span><span style="border-radius: 5px; padding: 7px 7px 7px 7px">created {{ created }}</mark></span> • 
