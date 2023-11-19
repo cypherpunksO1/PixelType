@@ -1,3 +1,13 @@
+// Вы можете определить базовый URL-адрес в зависимости от среды
+let baseUrl;
+if (window.location.hostname === 'localhost' || 
+    window.location.hostname === '127.0.0.1') {
+    baseUrl = 'http://localhost:8000'; // Замените на ваш локальный URL
+} else {
+    baseUrl = 'https://pixeltype.egoryolkin.ru'; // Замените на ваш хостинг URL
+}
+
+
 function formatDate(dateStr) {
     var date = new Date(dateStr);
     var currentYear = new Date().getFullYear();
@@ -44,7 +54,7 @@ async function createPost() {
         author = undefined;
     } 
 
-    let response = await fetch('/api/v1/post/create', {
+    let response = await fetch(`${baseUrl}/api/v1/post/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -75,7 +85,7 @@ async function uploadImage(file) {
     formData.append('image', file);
 
     try {
-        const response = await fetch('/api/v1/post/image/upload', {
+        const response = await fetch(`${baseUrl}/api/v1/post/image/upload`, {
             method: 'POST',
             body: formData
         });
@@ -94,7 +104,7 @@ async function createComment(post_key) {
         author = undefined;
     } 
 
-    let response = await fetch('/api/v1/comments/create', {
+    let response = await fetch(`${baseUrl}/api/v1/comments/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -121,7 +131,7 @@ async function createComment(post_key) {
 
 
 async function getPostComments(post_key) {
-    let response = await fetch('/api/v1/comments/get/' + post_key, {
+    let response = await fetch(`${baseUrl}/api/v1/comments/get/${post_key}`, {
         method: 'GET'
     });
     let status = response.status;
