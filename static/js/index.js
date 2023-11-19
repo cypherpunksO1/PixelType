@@ -54,7 +54,7 @@ async function createPost() {
         author = undefined;
     } 
 
-    let response = await fetch(`${baseUrl}/api/v1/post/create`, {
+    let response = await fetch(`${baseUrl}/api/v1/post/create/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ async function createComment(post_key) {
         author = undefined;
     } 
 
-    let response = await fetch(`${baseUrl}/api/v1/comments/create`, {
+    let response = await fetch(`${baseUrl}/api/v1/comments/create/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ async function createComment(post_key) {
 
 
 async function getPostComments(post_key) {
-    let response = await fetch(`${baseUrl}/api/v1/comments/get/${post_key}`, {
+    let response = await fetch(`${baseUrl}/api/v1/comments/get/${post_key}/`, {
         method: 'GET'
     });
     let status = response.status;
