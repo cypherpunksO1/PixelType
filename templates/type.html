@@ -33,6 +33,38 @@
         border-radius: 15px;
         width: 100%;
     }
+
+    @media (max-width: 1000px) {
+        img {
+            width: var(--window-size);
+            border-radius: 5px;
+            width: 100%;
+        }
+    }
+
+    textarea {
+        background: transparent;
+        border: 1px solid var(--main-bg-color);
+        outline: none;
+        resize: none;
+        width: 100%;
+        min-height: 50px;
+        margin-top: 20px;
+        font-size: 20px;
+        margin-top: -10px;
+    }
+
+    input {
+        background: transparent;
+        border: 1px solid var(--main-bg-color);
+        outline: none;
+        resize: none;
+        width: calc(100% - 10px);
+        min-height: 50px;
+        margin-top: 20px;
+        font-family: var(--text-font);
+        font-size: var(--text-size);
+    }
 </style>
 
 <body>
@@ -53,12 +85,47 @@
         </button>
         <br><br>
         <p class="text" style="word-wrap: break-word;">{{ post.text | safe }}</p>
+        <br><br>
+        <hr>
+        <br><br>
+        <span class="badge text-bg-warning">beta</span>
+        <h1 style="font-family: BoldFont;">Comments</h1>
+        <br>
+        <!-- <input class="roman" id="commentAuthorInput" type="text" placeholder="Author">
+        <label for="commentTextInput"></label>
+        <textarea placeholder="Comment..." name="" id="commentTextInput"></textarea> -->
+        <form class="form-floating">
+            <input type="email" class="form-control" id="commentAuthorInput" placeholder="Author">
+            <label for="commentAuthorInput">Author</label>
+          </form>
+          <br>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="commentTextInput" style="height: 100px"></textarea>
+            <label for="commentTextInput">Comment</label>
+        </div>
+        <br>
+        <button style="margin-top: -10px;" type="button" class="btn btn-success" id="createCommentButton">Leave comment</button>
+        <br><br><br><br>
+        <div id="comments"></div>
     </div>
 </div>
 
 <script src="/static/js/index.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 <script>
+    document.getElementById('commentAuthorInput').value = localStorage.getItem('author');
+    
+    getPostComments('{{ post.key }}')
+
+    document.getElementById("createCommentButton").onclick = function() {
+        createComment('{{ post.key }}');
+    }
+    const title_textarea = document.getElementById('commentTextInput');
+
+    title_textarea.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    });
+
     document.addEventListener("DOMContentLoaded", function () {
         // Найти все блоки с тегом code
         var codeBlocks = document.querySelectorAll("code");

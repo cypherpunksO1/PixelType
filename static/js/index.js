@@ -1,3 +1,18 @@
+function formatDate(dateStr) {
+    var date = new Date(dateStr);
+    var currentYear = new Date().getFullYear();
+    var currentTime = new Date().getTime();
+    var diffTime = currentTime - date.getTime();
+    var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (date.getFullYear() == currentYear) {
+        return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) + ' (' + diffDays + ' дней назад)';
+    } else {
+        return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) + ' (' + diffDays + ' дней назад)';
+    }
+}
+
+
 function copyToClipboard(text) {
     const textarea = document.createElement('textarea');
     textarea.value = text;
@@ -69,14 +84,78 @@ async function uploadImage(file) {
     }
 }
 
-const fileInput = document.querySelector('input[type="file"]');
-fileInput.addEventListener('change', async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        const result = await uploadImage(file);
-        insertText('![](/' + result['path'] + ')')
 
-        localStorage.setItem('text', document.getElementById('textInput').value);
-        localStorage.setItem('title', document.getElementById('titleInput').value);
+async function createComment(post_key) {
+    localStorage.setItem('author', document.getElementById('commentAuthorInput').value);
+
+    let author = document.getElementById('commentAuthorInput').value;
+        
+    if (author.length === 0) {
+        author = undefined;
+    } 
+
+    let response = await fetch('/api/v1/comments/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify({
+            text: document.getElementById('commentTextInput').value,
+            author: author, 
+            post_key: post_key
+        })
+    });
+
+    let status = response.status;
+
+    if (status === 201) {
+        document.getElementById('commentAuthorInput').value = "";
+        document.getElementById('commentTextInput').value = "";
+
+        getPostComments(post_key);
+    } else {
+
     }
-});
+}
+
+
+async function getPostComments(post_key) {
+    let response = await fetch('/api/v1/comments/get/' + post_key, {
+        method: 'GET'
+    });
+    let status = response.status;
+    let result = await response.json();
+
+    if (status === 200) {
+        if (result.length > 0) {
+            let content = '';
+            for (let item in result) {
+                let elem = result[item];
+
+                let html = `
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <br>
+                        <p>${elem.text}</p>
+                        <br>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <mark class="roman" style="border-radius: 5px; padding: 7px 7px 7px 7px">
+                                ${elem.author}
+                                </mark>
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <p class="small text-muted mb-0">${formatDate(elem.created)}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+                content += html;
+            }
+            let block = document.getElementById('comments');
+            block.innerHTML = content;
+        }
+    }
+}

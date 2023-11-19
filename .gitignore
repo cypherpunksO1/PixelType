@@ -4,8 +4,8 @@ __pycache__/
 *$py.class
 .idea
 
-# media/*
-# media/
+media/*
+media/
 
 .vscode/
 .DS_Store

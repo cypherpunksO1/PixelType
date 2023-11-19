@@ -10,6 +10,13 @@ class PostScheme:
     
     
 @dataclass
+class CommentScheme:
+    post_key: str
+    author: str = "Without author"
+    text: str | None = None
+
+    
+@dataclass
 class PostResponseSchema:
     key: str | None = None
 

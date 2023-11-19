@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 from src.posts.router import posts_router
+from src.comments.router import comments_router
 from src.templates.router import templates_router
 
 
@@ -9,6 +10,7 @@ def get_api_routers() -> APIRouter:
                        tags=["api"])
     
     router.include_router(posts_router, prefix="/post")
+    router.include_router(comments_router, prefix="/comments")
 
     return router
 

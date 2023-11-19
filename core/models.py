@@ -23,4 +23,16 @@ class Post(Base, SerializerMixin):
     created = Column(DateTime, default=datetime.utcnow)
 
 
+class Comment(Base, SerializerMixin):
+    __tablename__ = 'comment'
+
+    pk = Column(Integer, primary_key=True)
+    
+    post_key = Column(String)
+    author = Column(String)
+    text = Column(String)
+
+    created = Column(DateTime, default=datetime.utcnow)
+
+
 Base.metadata.create_all(engine)
