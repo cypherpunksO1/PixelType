@@ -166,6 +166,8 @@ async function getPostComments(post_key) {
             }
             let block = document.getElementById('comments');
             block.innerHTML = content;
+
+            document.getElementById("commentsCount").innerHTML = result.length;
         }
     }
 }

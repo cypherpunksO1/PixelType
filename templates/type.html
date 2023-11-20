@@ -10,7 +10,6 @@
 <meta property="author" content="{{ post.author }}">
 <meta name="author" content="{{ post.author }}">
 <meta property="tg:site_verification" content="g7j8/rPFXfhyrq5q0QQV7EsYWv4=">
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/file_input.css" type="text/css">
 <link rel="stylesheet" href="/static/css/hilights.css" type="text/css">
@@ -26,6 +25,10 @@
     p, i, em {
         margin-top: -20px;
         padding: 0;
+    }
+
+    p {
+        font-size: 20px;
     }
 
     img {
@@ -65,6 +68,7 @@
         font-family: var(--text-font);
         font-size: var(--text-size);
     }
+
 </style>
 
 <body>
@@ -76,36 +80,45 @@
             <span><span style="border-radius: 5px; padding: 7px 7px 7px 7px">created {{ created }}</mark></span> • 
             <span><span style="border-radius: 5px; padding: 7px 7px 7px 7px">{{ post.views }} eyes</mark></span><br>
         </p>
-        <h1 id="titleInput" class="display-4" style="font-weight: 700;">{{ post.title }}</h1>
+        <h1 id="titleInput" class="display-4" style="font-weight: 700; font-family: BoldFont;">{{ post.title }}</h1>
         <br>
         <button
             class="btn btn-outline-secondary"
             onclick="copyToClipboard(window.location.href);">
             Copy link 🔗
         </button>
+        <button 
+            class="btn btn-outline-secondary"
+            onclick="changeFont();">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fonts" viewBox="0 0 16 16">
+                <path d="M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479L12.258 3z"/>
+              </svg>
+        </button>
         <br><br>
         <p class="text" style="word-wrap: break-word;">{{ post.text | safe }}</p>
-        <br><br>
-        <hr>
-        <br><br>
-        <span class="badge text-bg-warning">beta</span>
-        <h1 style="font-family: BoldFont;">Comments</h1>
         <br>
-        <!-- <input class="roman" id="commentAuthorInput" type="text" placeholder="Author">
-        <label for="commentTextInput"></label>
-        <textarea placeholder="Comment..." name="" id="commentTextInput"></textarea> -->
-        <form class="form-floating">
-            <input type="email" class="form-control" id="commentAuthorInput" placeholder="Author">
-            <label for="commentAuthorInput">Author</label>
-          </form>
-          <br>
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="commentTextInput" style="height: 100px"></textarea>
-            <label for="commentTextInput">Comment</label>
+        <br>
+        <div>
+            <div>
+                <h1 style="font-family: BoldFont;">Create comment</h1>
+            </div>
+            <form class="form-floating">
+                <input type="email" class="form-control" id="commentAuthorInput" placeholder="Author">
+                <label for="commentAuthorInput">Author</label>
+              </form>
+              <br>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="commentTextInput" style="height: 100px"></textarea>
+                <label for="commentTextInput">Comment</label>
+            </div>
+            <br>
+            <button style="margin-top: -10px;" type="button" class="btn btn-success" id="createCommentButton">Leave comment</button>
+        </div>
+        <br><br>
+        <div>
+            <h1 style="font-family: BoldFont;">Discussion (<span id="commentsCount"></span>)</h1>
         </div>
         <br>
-        <button style="margin-top: -10px;" type="button" class="btn btn-success" id="createCommentButton">Leave comment</button>
-        <br><br><br><br>
         <div id="comments"></div>
     </div>
 </div>
@@ -168,5 +181,24 @@
             });
         }
     });
+</script>
+
+<script>
+    function changeFont() {
+    // Получаем все элементы p с классом .text
+    var elements = document.querySelectorAll('p');
+
+    // Проходимся по каждому элементу
+    for (var i = 0; i < elements.length; i++) {
+        // Если элемент имеет класс .roman, то мы его убираем
+        if (elements[i].classList.contains('roman')) {
+            elements[i].classList.remove('roman');
+        }
+        // Если элемент не имеет класса .roman, то мы его добавляем
+        else {
+            elements[i].classList.add('roman');
+        }
+    }
+}
 </script>
 {% endblock %}
